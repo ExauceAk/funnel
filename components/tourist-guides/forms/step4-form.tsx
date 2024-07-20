@@ -171,12 +171,12 @@ export default function Step4Form({ id, className }: Props) {
                           !field.value && "text-muted-foreground",
                         )}
                       >
-                        <p className="line-clamp-1 font-normal">
 
-                          <p className="line-clamp-1 font-normal">
-                            {field.value || "Selelectionnez une valeur"}
-                          </p>
+
+                        <p className="line-clamp-1 font-normal">
+                          {field.value || "Selelectionnez une valeur"}
                         </p>
+
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
