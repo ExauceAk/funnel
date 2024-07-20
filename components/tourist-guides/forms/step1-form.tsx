@@ -310,7 +310,7 @@ export default function Step1Form({ id, className }: Props) {
             className=" text-secondary-500"
             href="/tourist-guides/step2"
           >
-            <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-32 gap-2 text-md">Next <ArrowRight size={16} /></Button>
+            <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-32 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
           </Link>
 
         </div>
