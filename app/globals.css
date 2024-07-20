@@ -63,7 +63,23 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 50px;
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.932);
+    border-radius: 50px;
+  }
+
+  .sidebar::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 50px;
   }
 }
