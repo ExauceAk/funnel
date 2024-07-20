@@ -279,7 +279,7 @@ export default function Step2Form({ id, className }: Props) {
             className=" text-secondary-500"
             href="/partenaires-hotels/step1"
           >
-            <Button className="bg-blue-500 hover:bg-blue-500 w-36 gap-2 text-md"><ArrowLeft size={16} /> Précédent  </Button>
+            <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md"><ArrowLeft size={16} /> Précédent  </Button>
           </Link>
 
           {/* <Link
@@ -287,7 +287,7 @@ export default function Step2Form({ id, className }: Props) {
             href="/partenaires-hotels/step3"
 
           > */}
-          <Button disabled className="bg-blue-500 hover:bg-blue-500 w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
+          <Button disabled className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
           {/* </Link> */}
 
         </div>

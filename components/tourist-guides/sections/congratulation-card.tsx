@@ -33,7 +33,7 @@ export default function CongratulationCard() {
                         <Link
                             aria-label="start-now"
                             href=""
-                            className="text-blue-500 hover:text-blue-500 underline"
+                            className="text-[#2ea2bd] hover:text-[#2ea2bd] underline"
                         >
                             J&apos;accepte les conditions générales d&apos;utilisation .
                         </Link>
@@ -45,7 +45,7 @@ export default function CongratulationCard() {
                         <Link
                             aria-label="start-now"
                             href=""
-                            className="text-blue-500 hover:text-blue-500 underline"
+                            className="text-[#2ea2bd] hover:text-[#2ea2bd] underline"
                         >
                             Je souhaite recevoir des notifications par e-mail.
                         </Link>
@@ -57,7 +57,7 @@ export default function CongratulationCard() {
                         <Link
                             aria-label="start-now"
                             href=""
-                            className="text-blue-500 hover:text-blue-500 underline"
+                            className="text-[#2ea2bd] hover:text-[#2ea2bd] underline"
                         >
                             Je souhaite m&apos;inscrire à la newsletter.
                         </Link>
@@ -65,7 +65,7 @@ export default function CongratulationCard() {
                     <Button
 
                         disabled={isAccepte}
-                        className="h-[45px] w-full rounded-sm bg-blue-500 text-xl hover:bg-blue-500"
+                        className="h-[45px] w-full rounded-sm bg-[#2ea2bd] text-xl hover:bg-[#2ea2bd]"
                     >
                         <Link
                             aria-label="start-now"

@@ -237,14 +237,14 @@ export default function Step4Form({ id, className }: Props) {
             className=" text-secondary-500"
             href="/tourist-guides/step3"
           >
-            <Button className="bg-blue-500 hover:bg-blue-500 w-36 gap-2 text-md"><ArrowLeft size={16} /> Précédent  </Button>
+            <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md"><ArrowLeft size={16} /> Précédent  </Button>
           </Link>
 
           <Link
             className=" text-secondary-500"
             href="/tourist-guides/step5"
           >
-            <Button className="bg-blue-500 hover:bg-blue-500 w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
+            <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
           </Link>
 
         </div>
