@@ -69,7 +69,7 @@ export default function Step4Form({ id, className }: Props) {
       <form
         id={id}
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("grid w-full grid-cols-2 gap-12  ", className)}
+        className={cn("grid w-full grid-cols-2 gap-12 ", className)}
       >
 
 
@@ -92,14 +92,10 @@ export default function Step4Form({ id, className }: Props) {
                         )}
                       >
                         <p className="line-clamp-1 font-normal">
-                          Select Language
-                          {/* {eventsLoading
-                                ? "Select Event"
-                                : selectEvent
-                                  ? allEvents!.find(
-                                      (event) => event.id === selectEvent,
-                                    )?.title
-                                  : "Select Event"} */}
+
+                          <p className="line-clamp-1 font-normal">
+                            {field.value || "Selelectionnez une valeur"}
+                          </p>
                         </p>
                       </Button>
                     </FormControl>
@@ -122,9 +118,7 @@ export default function Step4Form({ id, className }: Props) {
                                 value={language.label}
                                 // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form
-                                    .watch("language")
-                                    .some((el) => el === language.value)
+                                  form.setValue("language", language.value)
                                   // ? handleRemoveEvent(event.id)
                                   // : setSelectEvent(event.id);
                                 }}
@@ -140,9 +134,7 @@ export default function Step4Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    form
-                                      .watch("language")
-                                      .some((el) => el === language.value)
+                                    language.value === field.value
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}
@@ -163,7 +155,7 @@ export default function Step4Form({ id, className }: Props) {
 
         <FormField
           control={form.control}
-          name="language"
+          name="languageL"
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Modes de Transport Proposés</FormLabel>
@@ -180,14 +172,10 @@ export default function Step4Form({ id, className }: Props) {
                         )}
                       >
                         <p className="line-clamp-1 font-normal">
-                          Select Language
-                          {/* {eventsLoading
-                                ? "Select Event"
-                                : selectEvent
-                                  ? allEvents!.find(
-                                      (event) => event.id === selectEvent,
-                                    )?.title
-                                  : "Select Event"} */}
+
+                          <p className="line-clamp-1 font-normal">
+                            {field.value || "Selelectionnez une valeur"}
+                          </p>
                         </p>
                       </Button>
                     </FormControl>
@@ -210,9 +198,7 @@ export default function Step4Form({ id, className }: Props) {
                                 value={language.label}
                                 // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form
-                                    .watch("language")
-                                    .some((el) => el === language.value)
+                                  form.setValue("languageL", language.value)
                                   // ? handleRemoveEvent(event.id)
                                   // : setSelectEvent(event.id);
                                 }}
@@ -228,9 +214,7 @@ export default function Step4Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    form
-                                      .watch("language")
-                                      .some((el) => el === language.value)
+                                    language.value === field.value
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}

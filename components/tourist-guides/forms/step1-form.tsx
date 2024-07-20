@@ -39,15 +39,12 @@ type Props = {
 
 
 const languages = [
-  { label: "English", value: "en" },
-  { label: "French", value: "fr" },
-  { label: "German", value: "de" },
-  { label: "Spanish", value: "es" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Russian", value: "ru" },
-  { label: "Japanese", value: "ja" },
-  { label: "Korean", value: "ko" },
-  { label: "Chinese", value: "zh" },
+  { label: "Français", value: "Français" },
+  { label: "anglais", value: "anglais" },
+  { label: "italien", value: "italien" },
+  { label: "espagnol", value: "espagnol" },
+  { label: "Autre", value: "Autre" },
+
 ] as const
 
 
@@ -57,6 +54,7 @@ const languagesL = [
   { label: "Yoruba", value: "Yoruba" },
   { label: "Bariba", value: "Bariba" },
   { label: "Dendi", value: "Dendi" },
+  { label: "Nago", value: "Nago" },
 ] as const
 
 
@@ -171,15 +169,9 @@ export default function Step1Form({ id, className }: Props) {
                         )}
                       >
                         <p className="line-clamp-1 font-normal">
-                          Select Language
-                          {/* {eventsLoading
-                                ? "Select Event"
-                                : selectEvent
-                                  ? allEvents!.find(
-                                      (event) => event.id === selectEvent,
-                                    )?.title
-                                  : "Select Event"} */}
+                          {field.value || "Selelectionnez une valeur"}
                         </p>
+
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
@@ -201,9 +193,10 @@ export default function Step1Form({ id, className }: Props) {
                                 value={language.label}
                                 // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form
-                                    .watch("language")
-                                    .some((el) => el === language.value)
+                                  // form
+                                  form.setValue("language", language.value)
+                                  //   .watch("language")
+                                  //   .some((el) => el === language.value)
                                   // ? handleRemoveEvent(event.id)
                                   // : setSelectEvent(event.id);
                                 }}
@@ -219,9 +212,7 @@ export default function Step1Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    form
-                                      .watch("language")
-                                      .some((el) => el === language.value)
+                                    language.value === field.value
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}
@@ -242,7 +233,7 @@ export default function Step1Form({ id, className }: Props) {
 
         <FormField
           control={form.control}
-          name="language"
+          name="languageL"
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Langues locale parlées</FormLabel>
@@ -259,14 +250,7 @@ export default function Step1Form({ id, className }: Props) {
                         )}
                       >
                         <p className="line-clamp-1 font-normal">
-                          Select Language
-                          {/* {eventsLoading
-                                ? "Select Event"
-                                : selectEvent
-                                  ? allEvents!.find(
-                                      (event) => event.id === selectEvent,
-                                    )?.title
-                                  : "Select Event"} */}
+                          {field.value || "Selelectionnez une valeur"}
                         </p>
                       </Button>
                     </FormControl>
@@ -289,11 +273,7 @@ export default function Step1Form({ id, className }: Props) {
                                 value={language.label}
                                 // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form
-                                    .watch("language")
-                                    .some((el) => el === language.value)
-                                  // ? handleRemoveEvent(event.id)
-                                  // : setSelectEvent(event.id);
+                                  form.setValue("languageL", language.value)
                                 }}
                               >
                                 <div className="col-span-11">
@@ -307,9 +287,7 @@ export default function Step1Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    form
-                                      .watch("language")
-                                      .some((el) => el === language.value)
+                                    language.value === field.value
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}

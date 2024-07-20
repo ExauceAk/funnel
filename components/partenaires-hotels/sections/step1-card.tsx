@@ -7,7 +7,7 @@ export default function Step1Card() {
     <div className="rounded-xl w-2/3  mx-auto shadow-lg my-auto space-y-4  bg-white p-6">
       <div className="flex justify-between items-center">
         <p className="text-2xl font-bold text-blue-500">
-          Etape 1: Personal Information
+          Etape 1
         </p>
 
         <div className="flex space-x-4 ">

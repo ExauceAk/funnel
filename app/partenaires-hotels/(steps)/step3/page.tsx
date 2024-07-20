@@ -1,5 +1,5 @@
 import Header from '@/components/header'
-import Step3Card from '@/components/tourist-guides/sections/step3-card'
+import Step3Card from '@/components/partenaires-hotels/sections/step3-card'
 
 export default function Step1Page() {
     return (

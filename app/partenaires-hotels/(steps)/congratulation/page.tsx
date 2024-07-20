@@ -1,5 +1,5 @@
 import Header from "@/components/header";
-import CongratulationCard from "@/components/tourist-guides/sections/congratulation-card";
+import CongratulationCard from "@/components/partenaires-hotels/sections/congratulation-card";
 
 /**
  * Complete profile page

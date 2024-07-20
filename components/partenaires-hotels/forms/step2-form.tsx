@@ -23,12 +23,10 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/popover";
 import useSelfPatientInfoForm from "@/hooks/tourist-guides/use-personnal-information-form";
 import { cn } from "@/lib/utils";
-
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, CheckIcon, ChevronsUpDown } from "lucide-react";
 import Link from "next/link";
 
@@ -39,28 +37,52 @@ type Props = {
 
 
 const languages = [
-  { label: "Abomey-Calavi", value: "Abomey-Calav" },
-  { label: "Cotonou", value: "Cotonou" },
-  { label: "Porto-Novo", value: "Porto-Novo" },
-  { label: "Parakou", value: "Parakou" },
-  { label: " Lokossa", value: " Lokossa" },
-  { label: "Ouidah", value: "Ouidah" },
-  { label: "Natitingou", value: "Natitingou" },
+  { label: "Hôtel", value: "Hôtel" },
+  { label: "Maison d'Hôtes", value: "Maison d'Hôtes" },
+  { label: "B&B / Chambre d'Hôtes", value: "B&B / Chambre d'Hôtes" },
+  { label: "Séjour chez l'Habitant", value: "Séjour chez l'Habitant" },
+  { label: "Auberge de Jeunesse", value: "Auberge de Jeunesse" },
+  { label: "Appart'hôtel", value: "Appart'hôtel" },
   { label: "Autre", value: "Autre" },
 ] as const
 
 
 const languagesL = [
-  { label: "Journées", value: "Journées" },
-  { label: "Soirées", value: "Soirées" },
-  { label: "Week-ends", value: "Week-ends" },
-  { label: "Vacances scolaires", value: "Vacances scolaires" },
-  { label: "Autre", value: "Autre" },
+  { label: "Restaurant", value: "Restaurant" },
+  { label: "Service d'Étage", value: "Service d'Étage" },
+  { label: "Bar", value: "Bar" },
+  { label: "Réception ouverte 24h/24", value: "Réception ouverte 24h/24" },
+  { label: "Sauna", value: "Sauna" },
+  { label: "Centre de Remise en Forme", value: "Centre de Remise en Forme" },
+  { label: "Jardin", value: "Jardin" },
+  { label: "Terrasse", value: "Terrasse" },
+  { label: "Chambres Non-Fumeurs", value: "Chambres Non-Fumeurs" },
+  { label: "Navette Aéroport", value: "Navette Aéroport" },
+  { label: "Chambres Familiales", value: "Chambres Familiales" },
+  { label: "Spa et Centre de Bien-Être", value: "Spa et Centre de Bien-Être" },
+  { label: "Bain à Remous / Jacuzzi", value: "Bain à Remous / Jacuzzi" },
+  { label: "Connexion Wi-Fi Gratuite", value: "Connexion Wi-Fi Gratuite" },
+  { label: "Climatisation", value: "Climatisation" },
+  { label: "Parc Aquatique", value: "Parc Aquatique" },
+  { label: "Borne de Recharge pour les Véhicules Électriques", value: "Borne de Recharge pour les Véhicules Électriques" },
+  { label: "Piscine", value: "Piscine" },
+  { label: "Plage", value: "Plage" },
 ] as const
 
 
 export default function Step2Form({ id, className }: Props) {
   const form = useSelfPatientInfoForm();
+
+  const [rating, setRating] = useState(0)
+
+  // Catch Rating value
+  const handleRating = (rate: number) => {
+    setRating(rate)
+
+    // other logic
+  }
+
+
 
 
   const onSubmit = useCallback(() => { }, []);
@@ -73,52 +95,12 @@ export default function Step2Form({ id, className }: Props) {
         className={cn("grid w-full grid-cols-2 gap-12  ", className)}
       >
 
-
-        <FormField
-          control={form.control}
-          name="firstName"
-          render={({ field }) => (
-            <FormItem className="col-span-2 sm:col-span-1">
-              <FormLabel className="text-primary-900">
-                Spécialités
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="John"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="lastName"
-          render={({ field }) => (
-            <FormItem className="col-span-2 sm:col-span-1">
-              <FormLabel className="text-primary-900">
-                Certifications
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Doe"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-
         <FormField
           control={form.control}
           name="language"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Zones d'intervention au Bénin</FormLabel>
+              <FormLabel>Type d'Établissement </FormLabel>
               <FormControl>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -132,14 +114,10 @@ export default function Step2Form({ id, className }: Props) {
                         )}
                       >
                         <p className="line-clamp-1 font-normal">
-                          Select une zone
-                          {/* {eventsLoading
-                                ? "Select Event"
-                                : selectEvent
-                                  ? allEvents!.find(
-                                      (event) => event.id === selectEvent,
-                                    )?.title
-                                  : "Select Event"} */}
+
+                          <p className="line-clamp-1 font-normal">
+                            {field.value || "Selelectionnez une valeur"}
+                          </p>
                         </p>
                       </Button>
                     </FormControl>
@@ -162,9 +140,7 @@ export default function Step2Form({ id, className }: Props) {
                                 value={language.label}
                                 // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form
-                                    .watch("language")
-                                    .some((el) => el === language.value)
+                                  form.setValue("language", language.value)
                                   // ? handleRemoveEvent(event.id)
                                   // : setSelectEvent(event.id);
                                 }}
@@ -180,9 +156,7 @@ export default function Step2Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    form
-                                      .watch("language")
-                                      .some((el) => el === language.value)
+                                    language.value === field.value
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}
@@ -206,7 +180,7 @@ export default function Step2Form({ id, className }: Props) {
           name="language"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Disponibilité</FormLabel>
+              <FormLabel>Services Proposés par l'Hôtel</FormLabel>
               <FormControl>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -250,9 +224,7 @@ export default function Step2Form({ id, className }: Props) {
                                 value={language.label}
                                 // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form
-                                    .watch("language")
-                                    .some((el) => el === language.value)
+                                  form.setValue("languageL", language.value)
                                   // ? handleRemoveEvent(event.id)
                                   // : setSelectEvent(event.id);
                                 }}
@@ -268,9 +240,7 @@ export default function Step2Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    form
-                                      .watch("language")
-                                      .some((el) => el === language.value)
+                                    language.value === field.value
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}
@@ -288,20 +258,37 @@ export default function Step2Form({ id, className }: Props) {
             </FormItem>
           )}
         />
+
+        {/* <FormField
+          control={form.control}
+          name="firstName"
+          render={({ field }) => (
+            <FormItem className="col-span-2 sm:col-span-2">
+              <FormLabel className="text-primary-900">
+                Nombre d'Étoiles
+              </FormLabel>
+              <FormControl>
+                <Rating />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        /> */}
         <div className="mb-2 flex justify-center gap-8 items-center col-span-2">
           <Link
             className=" text-secondary-500"
-            href="/tourist-guides/step1"
+            href="/partenaires-hotels/step1"
           >
             <Button className="bg-blue-500 hover:bg-blue-500 w-36 gap-2 text-md"><ArrowLeft size={16} /> Précédent  </Button>
           </Link>
 
-          <Link
+          {/* <Link
             className=" text-secondary-500"
-            href="/tourist-guides/step3"
-          >
-            <Button className="bg-blue-500 hover:bg-blue-500 w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
-          </Link>
+            href="/partenaires-hotels/step3"
+
+          > */}
+          <Button disabled className="bg-blue-500 hover:bg-blue-500 w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
+          {/* </Link> */}
 
         </div>
 
