@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function Step1Page() {
     return (
-        <div className="bg-[#E4E7EC]  h-screen  space-y-4">
+        <div className=" bg-[linear-gradient(#a7d3724f,#102a5b6f),url('/images/font.jpg')] bg-cover h-screen space-y-4">
             <Header />
             <Step1Card />
         </div>

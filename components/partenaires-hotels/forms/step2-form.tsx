@@ -29,6 +29,10 @@ import { cn } from "@/lib/utils";
 import { useCallback, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, CheckIcon, ChevronsUpDown } from "lucide-react";
 import Link from "next/link";
+//@ts-ignore
+import ReactStars from "react-rating-stars-component";
+
+
 
 type Props = {
   id: string;
@@ -73,16 +77,8 @@ const languagesL = [
 export default function Step2Form({ id, className }: Props) {
   const form = useSelfPatientInfoForm();
 
+
   const [rating, setRating] = useState(0)
-
-  // Catch Rating value
-  const handleRating = (rate: number) => {
-    setRating(rate)
-
-    // other logic
-  }
-
-
 
 
   const onSubmit = useCallback(() => { }, []);
@@ -114,11 +110,9 @@ export default function Step2Form({ id, className }: Props) {
                         )}
                       >
                         <p className="line-clamp-1 font-normal">
-
-                          <p className="line-clamp-1 font-normal">
-                            {field.value || "Selelectionnez une valeur"}
-                          </p>
+                          {field.value || "Selelectionnez une valeur"}
                         </p>
+
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
@@ -259,21 +253,21 @@ export default function Step2Form({ id, className }: Props) {
           )}
         />
 
-        {/* <FormField
-          control={form.control}
-          name="firstName"
-          render={({ field }) => (
-            <FormItem className="col-span-2 sm:col-span-2">
-              <FormLabel className="text-primary-900">
-                Nombre d'Étoiles
-              </FormLabel>
-              <FormControl>
-                <Rating />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
+
+
+        <div className="flex justify-center items-center gap-4 col-span-2">
+          <p className="text-lg" >Nombre d'Étoiles :</p>
+          <ReactStars
+            count={5}
+            // onChange={ratingChanged}
+            size={40}
+            activeColor="#ffd700"
+          />
+        </div>
+
+
+
+
         <div className="mb-2 flex justify-center gap-8 items-center col-span-2">
           <Link
             className=" text-secondary-500"
@@ -282,13 +276,13 @@ export default function Step2Form({ id, className }: Props) {
             <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md"><ArrowLeft size={16} /> Précédent  </Button>
           </Link>
 
-          {/* <Link
+          <Link
             className=" text-secondary-500"
             href="/partenaires-hotels/step3"
 
-          > */}
-          <Button disabled className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
-          {/* </Link> */}
+          >
+            <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
+          </Link>
 
         </div>
 

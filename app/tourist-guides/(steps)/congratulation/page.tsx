@@ -7,7 +7,7 @@ import CongratulationCard from "@/components/tourist-guides/sections/congratulat
  */
 export default function CongratulationPage() {
   return (
-    <div className="bg-[#E4E7EC]  h-screen  space-y-4">
+    <div className="bg-[url('/images/font.jpg')] bg-cover h-screen space-y-4">
       <Header />
       <CongratulationCard />
     </div>
