@@ -32,6 +32,7 @@ import { useCallback } from "react";
 import { ArrowLeft, ArrowRight, Check, CheckIcon, ChevronsUpDown } from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
+import useTouristGuidesForm from "@/hooks/tourist-guides/use-personnal";
 
 type Props = {
   id: string;
@@ -50,7 +51,7 @@ const languages = [
 
 
 export default function Step3Form({ id, className }: Props) {
-  const form = useSelfPatientInfoForm();
+  const form = useTouristGuidesForm();
 
 
   const onSubmit = useCallback(() => { }, []);

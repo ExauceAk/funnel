@@ -3,32 +3,31 @@
 // import ImageUpload from "@/components/image-upload";
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
   Command,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
-} from "@/components/ui/command"
+  CommandList
+} from "@/components/ui/command";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from "@/components/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import useSelfPatientInfoForm from "@/hooks/tourist-guides/use-personnal-information-form";
 import { cn } from "@/lib/utils";
-import { useCallback, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, CheckIcon, ChevronsUpDown } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckIcon } from "lucide-react";
 import Link from "next/link";
+import { useCallback, useState } from "react";
+//@ts-ignore
+import useTouristGuidesForm from "@/hooks/tourist-guides/use-personnal";
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 
@@ -75,7 +74,7 @@ const languagesL = [
 
 
 export default function Step2Form({ id, className }: Props) {
-  const form = useSelfPatientInfoForm();
+  const form = useTouristGuidesForm();
 
 
   const [rating, setRating] = useState(0)
