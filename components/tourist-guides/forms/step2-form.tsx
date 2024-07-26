@@ -28,7 +28,7 @@ import { Input } from "@/components/ui/input";
 import useSelfPatientInfoForm from "@/hooks/tourist-guides/use-personnal-information-form";
 import { cn } from "@/lib/utils";
 
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, CheckIcon, ChevronsUpDown } from "lucide-react";
 import Link from "next/link";
 
@@ -61,6 +61,77 @@ const languagesL = [
 
 export default function Step2Form({ id, className }: Props) {
   const form = useSelfPatientInfoForm();
+
+  const [selectLanguage, setSelectLanguage] = useState("");
+
+  useEffect(() => {
+    if (selectLanguage) {
+      const selectedUser = languages?.find((d) => d.label === selectLanguage);
+
+      if (selectedUser) {
+        const existingUserIndex = form
+          .getValues("language")
+          .findIndex((user) => user === selectedUser.label);
+
+        if (existingUserIndex === -1 || existingUserIndex < 0) {
+          form.setValue("language", [
+            ...form.getValues().language,
+            selectedUser.label,
+          ]);
+        }
+      } else {
+        console.log("Error");
+      }
+    }
+  }, [selectLanguage]);
+
+  /**
+   * function to remove user
+   * @param userToRemove
+   */
+  const handleRemoveUser = (remove: string) => {
+    const updated = form
+      .getValues()
+      .language.filter((item) => item !== remove);
+    //@ts-ignore
+    form.setValue("language", updated);
+  };
+
+
+  const [selectLanguageL, setSelectLanguageL] = useState("");
+
+  useEffect(() => {
+    if (selectLanguageL) {
+      const selectedUser = languagesL?.find((d) => d.label === selectLanguageL);
+
+      if (selectedUser) {
+        const existingUserIndex = form
+          .getValues("languageL")
+          .findIndex((user) => user === selectedUser.label);
+
+        if (existingUserIndex === -1 || existingUserIndex < 0) {
+          form.setValue("languageL", [
+            ...form.getValues().languageL,
+            selectedUser.label,
+          ]);
+        }
+      } else {
+        console.log("Error");
+      }
+    }
+  }, [selectLanguageL]);
+
+  /**
+   * function to remove user
+   * @param userToRemove
+   */
+  const handleRemoveUserL = (remove: string) => {
+    const updated = form
+      .getValues()
+      .languageL.filter((item) => item !== remove);
+    //@ts-ignore
+    form.setValue("languageL", updated);
+  };
 
 
   const onSubmit = useCallback(() => { }, []);
@@ -156,11 +227,13 @@ export default function Step2Form({ id, className }: Props) {
                                 key={language.value}
                                 className="grid grid-cols-12"
                                 value={language.label}
-                                // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form.setValue("language", language.value)
-                                  // ? handleRemoveEvent(event.id)
-                                  // : setSelectEvent(event.id);
+                                  form
+                                    .watch("language")
+                                    .some((el) => el === language.value)
+                                    ? handleRemoveUser(language.value)
+                                    : setSelectLanguage(language.value);
+                                  form.watch("language")
                                 }}
                               >
                                 <div className="col-span-11">
@@ -174,7 +247,9 @@ export default function Step2Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    language.value === field.value
+                                    form
+                                    .watch("language")
+                                    .some((el) => el === language.value)
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}
@@ -236,13 +311,14 @@ export default function Step2Form({ id, className }: Props) {
                                 key={language.value}
                                 className="grid grid-cols-12"
                                 value={language.label}
-                                // onSelect={() => setSelectEvent(event.id)}
                                 onSelect={() => {
-                                  form.setValue("languageL", language.value)
-                                  // ? handleRemoveEvent(event.id)
-                                  // : setSelectEvent(event.id);
-                                }}
-                              >
+                                  form
+                                    .watch("languageL")
+                                    .some((el) => el === language.value)
+                                    ? handleRemoveUserL(language.value)
+                                    : setSelectLanguageL(language.value);
+                                  form.watch("languageL")
+                                }}                              >
                                 <div className="col-span-11">
 
                                   <p className="line-clamp-1">
@@ -254,7 +330,9 @@ export default function Step2Form({ id, className }: Props) {
                                 <CheckIcon
                                   className={cn(
                                     "ml-auto h-4 w-4",
-                                    language.value === field.value
+                                    form
+                                    .watch("languageL")
+                                    .some((el) => el === language.value)
                                       ? "opacity-100"
                                       : "opacity-0",
                                   )}
