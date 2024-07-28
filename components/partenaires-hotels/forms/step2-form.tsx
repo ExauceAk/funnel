@@ -94,7 +94,7 @@ export default function Step2Form({ id, className }: Props) {
           control={form.control}
           name="language"
           render={({ field }) => (
-            <FormItem className="flex flex-col">
+            <FormItem className="flex flex-col col-span-2 sm:col-span-1">
               <FormLabel>Type d'Établissement </FormLabel>
               <FormControl>
                 <Popover>
@@ -172,7 +172,7 @@ export default function Step2Form({ id, className }: Props) {
           control={form.control}
           name="language"
           render={({ field }) => (
-            <FormItem className="flex flex-col">
+            <FormItem className="flex flex-col col-span-2 sm:col-span-1">
               <FormLabel>Services Proposés par l'Hôtel</FormLabel>
               <FormControl>
                 <Popover>
@@ -254,7 +254,7 @@ export default function Step2Form({ id, className }: Props) {
 
 
 
-        <div className="flex justify-center items-center gap-4 col-span-2">
+        <div className="flex-none md:flex justify-center items-center gap-4 col-span-2">
           <p className="text-lg" >Nombre d'Étoiles :</p>
           <ReactStars
             count={5}

@@ -71,7 +71,7 @@ export default function Step1Form({ id, className }: Props) {
       <form
         id={id}
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("grid w-full grid-cols-2 gap-12 max-h-[60vh] overflow-auto sidebar", className)}
+        className={cn("grid w-full grid-cols-2 gap-12 md:max-h-[60vh] overflow-auto sidebar", className)}
       >
 
         <p className="text-xl col-span-2">Informations personnels</p>

@@ -64,12 +64,12 @@ export default function Step3Form({ id, className }: Props) {
         className={cn("grid w-full grid-cols-2 gap-12  ", className)}
       >
 
-        <div className="flex items-center  gap-6">
+        <div className="flex items-center gap-6 col-span-2 sm:col-span-1">
           <FormField
             control={form.control}
             name="lastName"
             render={({ field }) => (
-              <FormItem className="col-span-2 sm:col-span-1">
+              <FormItem className="">
                 <FormLabel className="text-primary-900">
                   Horaires d'Arrivée
                 </FormLabel>
@@ -88,7 +88,7 @@ export default function Step3Form({ id, className }: Props) {
             control={form.control}
             name="firstName"
             render={({ field }) => (
-              <FormItem className="col-span-2 sm:col-span-1">
+              <FormItem className="">
                 <FormLabel className="text-primary-900">
                   Horaires de Départ
                 </FormLabel>
@@ -109,7 +109,7 @@ export default function Step3Form({ id, className }: Props) {
           control={form.control}
           name="language"
           render={({ field }) => (
-            <FormItem className="flex flex-col">
+            <FormItem className="flex flex-col col-span-2 sm:col-span-1">
               <FormLabel>Types de Visites Guidées</FormLabel>
               <FormControl>
                 <Popover>
@@ -187,7 +187,7 @@ export default function Step3Form({ id, className }: Props) {
           control={form.control}
           name="languageL"
           render={({ field }) => (
-            <FormItem className="space-y-3">
+            <FormItem className="space-y-3 col-span-2 sm:col-span-1">
               <FormLabel>Les clients ont-ils accès à un parking ?</FormLabel>
               <FormControl>
                 <RadioGroup
@@ -228,7 +228,7 @@ export default function Step3Form({ id, className }: Props) {
           control={form.control}
           name="notes"
           render={({ field }) => (
-            <FormItem className="space-y-3">
+            <FormItem className="space-y-3 col-span-2 sm:col-span-1">
               <FormLabel>Est-il nécessaire de réserver une place de parking ?</FormLabel>
               <FormControl>
                 <RadioGroup
@@ -267,14 +267,14 @@ export default function Step3Form({ id, className }: Props) {
         <div className="mb-2 flex justify-center gap-8 items-center col-span-2">
           <Link
             className=" text-secondary-500"
-            href="/tourist-guides/step2"
+            href="/partenaires-hotels/step2"
           >
             <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md"><ArrowLeft size={16} /> Précédent  </Button>
           </Link>
 
           <Link
             className=" text-secondary-500"
-            href="/tourist-guides/step4"
+            href="/partenaires-hotels/congratulation"
           >
             <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd] w-36 gap-2 text-md">Suivant <ArrowRight size={16} /></Button>
           </Link>
