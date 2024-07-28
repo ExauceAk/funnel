@@ -68,6 +68,12 @@
     @apply bg-background text-foreground;
   }
 
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
   .sidebar::-webkit-scrollbar {
     width: 5px;
     border-radius: 50px;

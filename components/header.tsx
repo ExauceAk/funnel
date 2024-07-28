@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <div className="flex justify-between items-center w-full h-20 bg-white">
-            <div className="flex items-center">
+        <div className="flex justify-center  md:justify-between items-center w-full h-20 bg-white">
+            <div className="flex items-center ">
                 <Image
                     alt="LOGO"
                     width={100}

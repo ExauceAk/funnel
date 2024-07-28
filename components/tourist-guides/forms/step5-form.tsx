@@ -47,7 +47,7 @@ export default function Step5Form({ id, className }: Props) {
           control={form.control}
           name="firstName"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="col-span-2 sm:col-span-1">
               <FormLabel className="text-primary-900">
                 Photos de visites guidées précédentes
               </FormLabel>
