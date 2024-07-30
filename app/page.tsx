@@ -16,6 +16,11 @@ export default function Home() {
           Partenaires d&apos;hôtels
         </Button>
       </Link>
+      <Link className=" text-secondary-500" href="/partenaires-hotels/step1">
+        <Button className="bg-[#2ea2bd] hover:bg-[#2ea2bd]">
+          Partenaires d&apos;hôtels
+        </Button>
+      </Link>
     </div>
   );
 }
